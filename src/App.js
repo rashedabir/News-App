@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import News from "./component/News";
+import { NewsContextProvider } from "./NewsContext";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./component/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NewsContextProvider>
+      <Router>
+      <Header/>
+        <Switch>
+          <Route path="/" exact>
+            <News />
+          </Route>
+        </Switch>
+      </Router>
+      <footer>Developed by @rashed</footer>
+    </NewsContextProvider>
   );
 }
 
